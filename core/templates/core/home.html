@@ -1,10 +1,10 @@
 {% extends "core/base.html" %}
 
-{% block title %}Django project template{% endblock %}
+{% block title %}Data Governance DB{% endblock %}
 {% block content %}
     {% if user.is_authenticated %}
-        <h1>Django project template</h1>
-        <p>Welcome to the Django project template.</p>
+        <h1>Data Governance DB</h1>
+        <p>Welcome to the Data Governance DB.</p>
     {% else %}
         <p>Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">register</a> to continue.</p>
     {% endif %}

@@ -6,8 +6,8 @@ After=network.target
 [Service]
 User=website
 Group=www-data
-WorkingDirectory=/home/website/django-project-template
-ExecStart=/home/website/django-project-template/venv/bin/gunicorn \
+WorkingDirectory=/home/website/data-governance-db
+ExecStart=/home/website/data-governance-db/venv/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
           --timeout 600 \

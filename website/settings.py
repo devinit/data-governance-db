@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG') == "True"
 
-ALLOWED_HOSTS = ['127.0.0.1', 'website.devinit.org']
+ALLOWED_HOSTS = ['127.0.0.1', 'datagov.devinit.org']
 
 
 # Application definition

@@ -33,7 +33,7 @@ def register(request):
 
 
 def activateEmail(request, user, to_email):
-    mail_subject = 'Activate your Django Project Template user account.'
+    mail_subject = 'Activate your Data Governance DB user account.'
     html_message = render_to_string('users/register_email.html', {
         'user': user.username,
         'domain': get_current_site(request).domain,
@@ -42,7 +42,7 @@ def activateEmail(request, user, to_email):
         'protocol': 'https' if request.is_secure() else 'http'
     })
     plain_message = strip_tags(html_message)
-    from_email = 'Django Project Template <{}>'.format(settings.EMAIL_FROM)
+    from_email = 'Data Governance DB <{}>'.format(settings.EMAIL_FROM)
     to = user.email
     mail.send_mail(mail_subject, plain_message, from_email, [to], html_message=html_message)
 

@@ -19,8 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from core.serializers import router
 
-admin.site.site_header  =  "Django Project Template"
-admin.site.site_title  =  "Django Project Template"
+admin.site.site_header  =  "Data Governance DB"
+admin.site.site_title  =  "Data Governance DB"
 admin.site.index_title  =  "Administration"
 
 urlpatterns = [

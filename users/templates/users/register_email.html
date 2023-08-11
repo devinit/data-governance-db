@@ -1,9 +1,9 @@
 {% autoescape off %}
-<h1>Django Project Template Registration</h1>
+<h1>Data Governance DB Registration</h1>
 
 <p>Hi {{ user }},</p>
 
-<p>Please click on the link below to confirm your registration for the Django Project Template:</p>
+<p>Please click on the link below to confirm your registration for the Data Governance DB:</p>
 
 <p>
     <a href="{{ protocol }}://{{ domain }}{% url 'register_complete' uidb64=uid token=token %}">

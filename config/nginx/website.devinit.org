@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name website.devinit.org;
+    server_name datagov.devinit.org;
 
     client_max_body_size 100M;
     proxy_read_timeout 600;
@@ -9,7 +9,7 @@ server {
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        root /home/website/django-project-template;
+        root /home/website/data-governance-db;
     }
 
     location / {

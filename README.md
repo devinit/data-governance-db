@@ -1,10 +1,10 @@
-# Django project template
+# Data Governance DB
 
 ## Template setup
 
-1. Replace string "Django Project Template" with the name of your project
-2. Replace string "django-project-template" with the name of your project repository slug
-3. Replace string "website.devinit.org" with domain of your project
+1. Replace string "Data Governance DB" with the name of your project
+2. Replace string "data-governance-db" with the name of your project repository slug
+3. Replace string "datagov.devinit.org" with domain of your project
 
 ## Setup
 ```
@@ -16,9 +16,9 @@ sudo usermod -a -G www-data website
 
 su website
 cd ~
-git clone https://github.com/devinit/django-project-template.git
+git clone https://github.com/devinit/data-governance-db.git
 
-cd django-project-template
+cd data-governance-db
 
 cp .env-example .env
 
@@ -32,7 +32,7 @@ python3 manage.py createsuperuser
 
 exit
 chown -R website:www-data /home/website
-cd /home/website/django-project-template
+cd /home/website/data-governance-db
 
 sudo cp config/gunicorn/gunicorn.socket /etc/systemd/system/gunicorn.socket
 sudo cp config/gunicorn/gunicorn.service /etc/systemd/system/gunicorn.service
@@ -42,8 +42,8 @@ sudo systemctl daemon-reload
 sudo systemctl start gunicorn.socket
 sudo systemctl enable gunicorn.socket
 
-sudo cp config/nginx/website.devinit.org /etc/nginx/sites-available/website.devinit.org
-sudo ln -s /etc/nginx/sites-available/website.devinit.org /etc/nginx/sites-enabled
+sudo cp config/nginx/datagov.devinit.org /etc/nginx/sites-available/datagov.devinit.org
+sudo ln -s /etc/nginx/sites-available/datagov.devinit.org /etc/nginx/sites-enabled
 sudo systemctl restart nginx
 
 sudo ufw allow 'Nginx Full'
@@ -53,7 +53,7 @@ sudo apt remove certbot
 sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
-sudo certbot --nginx -d website.devinit.org
+sudo certbot --nginx -d datagov.devinit.org
 
 sudo systemctl status snap.certbot.renew.service
 sudo certbot renew --dry-run
@@ -62,7 +62,7 @@ sudo certbot renew --dry-run
 ## Deployment
 ```
 su website
-cd ~/django-project-template
+cd ~/data-governance-db
 git pull origin main
 source venv/bin/activate
 pip3 install -r requirements.txt
