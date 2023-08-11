@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+
+{% block title %}Document types{% endblock %}
+{% block content %}
+    <table class="green sortable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for documenttype in documenttype_list %}
+                <tr>
+                    <td>
+                        <a href="{% url 'core:institution_type_detail' documenttype.id %}">{{ documenttype.id }}</a>
+                    </td>
+                    <td>{{ documenttype.name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

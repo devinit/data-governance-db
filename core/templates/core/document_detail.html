@@ -1,0 +1,97 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ document }}{% endblock %}
+{% block content %}
+    <h1>{{ document }}</h1>
+    <h2>Details</h2>
+    <table class="green small">
+        <tbody>
+            <tr>
+                <td>
+                    <b>ID</b>
+                </td>
+                <td>{{ document.id }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Title</b>
+                </td>
+                <td>{{ document.title }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Institution</b>
+                </td>
+                {% if document.institution %}
+                    <td>
+                        <a href="{% url 'core:institution_detail' document.institution.id %}">
+                            {{ document.institution }}
+                        </a>
+                    </td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>
+                    <b>Category</b>
+                </td>
+                {% if document.category %}
+                    <td>
+                        <a href="{% url 'core:category_detail' document.category.id %}">
+                            {{ document.category }}
+                        </a>
+                    </td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>
+                    <b>Type</b>
+                </td>
+                {% if document.type %}
+                    <td>
+                        <a href="{% url 'core:document_type_detail' document.type.id %}">
+                            {{ document.type }}
+                        </a>
+                    </td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>
+                    <b>Year</b>
+                </td>
+                <td>{{ document.year }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Publisher</b>
+                </td>
+                <td>{{ document.publisher }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Note</b>
+                </td>
+                <td>{{ document.Note }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>URL</b>
+                </td>
+                {% if document.url %}
+                    <td>
+                        <a href="{{document.url}}">
+                            {{ document.url }}
+                        </a>
+                    </td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "core/base.html" %}
+
+{% block title %}Documents{% endblock %}
+{% block content %}
+    <table class="green sortable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Institution</th>
+                <th>Category</th>
+                <th>Type</th>
+                <th>Year</th>
+                <th>Publisher</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for document in document_list %}
+                <tr>
+                    <td>
+                        <a href="{% url 'core:document_detail' document.id %}">{{ document.id }}</a>
+                    </td>
+                    <td>{{ document.title }}</td>
+                    {% if document.institution %}
+                        <td>
+                            <a href="{% url 'core:institution_detail' document.institution.id %}">
+                                {{ document.institution }}
+                            </a>
+                        </td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                    {% if document.category %}
+                        <td>
+                            <a href="{% url 'core:category_detail' document.category.id %}">
+                                {{ document.category }}
+                            </a>
+                        </td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                    {% if document.type %}
+                        <td>
+                            <a href="{% url 'core:document_type_detail' document.type.id %}">
+                                {{ document.type }}
+                            </a>
+                        </td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                    <td>{{ document.year }}</td>
+                    <td>{{ document.publisher }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

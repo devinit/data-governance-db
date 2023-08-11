@@ -1,10 +1,5 @@
 # Data Governance DB
 
-## Template setup
-
-1. Replace string "Data Governance DB" with the name of your project
-2. Replace string "data-governance-db" with the name of your project repository slug
-3. Replace string "datagov.devinit.org" with domain of your project
 
 ## Setup
 ```

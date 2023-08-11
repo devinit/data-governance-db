@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+
+{% block title %}Categories{% endblock %}
+{% block content %}
+    <table class="green sortable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in category_list %}
+                <tr>
+                    <td>
+                        <a href="{% url 'core:institution_type_detail' category.id %}">{{ category.id }}</a>
+                    </td>
+                    <td>{{ category.name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

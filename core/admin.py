@@ -2,9 +2,13 @@ from django.contrib import admin
 from django.contrib.admin.models import LogEntry
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-# from .models import (
-#      Client
-# )
+from .models import (
+    Document,
+    Institution,
+    InstitutionType,
+    Category,
+    DocumentType
+)
 
 
 class LogEntryAdmin(admin.ModelAdmin):
@@ -44,5 +48,9 @@ class CustomUserAdmin(BaseUserAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
-# admin.site.register(Client)
+admin.site.register(Document)
+admin.site.register(Institution)
+admin.site.register(InstitutionType)
+admin.site.register(Category)
+admin.site.register(DocumentType)
 admin.site.register(LogEntry, LogEntryAdmin)

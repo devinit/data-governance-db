@@ -1,0 +1,33 @@
+{% extends "core/base.html" %}
+
+{% block title %}Institutions{% endblock %}
+{% block content %}
+    <table class="green sortable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for institution in institution_list %}
+                <tr>
+                    <td>
+                        <a href="{% url 'core:institution_detail' institution.id %}">{{ institution.id }}</a>
+                    </td>
+                    <td>{{ institution.name }}</td>
+                    {% if institution.type %}
+                        <td>
+                            <a href="{% url 'core:institution_type_detail' institution.type.id %}">
+                                {{ institution.type }}
+                            </a>
+                        </td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

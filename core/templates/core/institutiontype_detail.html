@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ institutiontype }}{% endblock %}
+{% block content %}
+    <h1>{{ institutiontype }}</h1>
+    <h2>Details</h2>
+    <table class="green small">
+        <tbody>
+            <tr>
+                <td>
+                    <b>ID</b>
+                </td>
+                <td>{{ institutiontype.id }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Name</b>
+                </td>
+                <td>{{ institutiontype.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

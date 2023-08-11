@@ -16,12 +16,38 @@
                     class="active"
                 {% endif %}
                 href="{% url 'core:home' %}">Home</a></li>
+            <li class="left">
+                <a target="_blank"
+                    href="https://docs.google.com/document/d/1za7--nrfNzxn-X_yAWVVSer9_WF7L1340qJ-Uh0lNzI/edit?usp=sharing">
+                    FAQ
+                </a>
+            </li>
             {% if user.is_authenticated %}
-                <!-- <li class="left"><a
-                    {% if request.resolver_match.url_name in 'clients,client' %}
+                <li class="left"><a
+                    {% if request.resolver_match.url_name in 'document_list,document_detail' %}
                         class="active"
                     {% endif %}
-                    href="{# url 'core:clients' #}">Clients</a></li> -->
+                    href="{% url 'core:document_list' %}">Documents</a></li>
+                <li class="left"><a
+                    {% if request.resolver_match.url_name in 'institution_list,institution_detail' %}
+                        class="active"
+                    {% endif %}
+                    href="{% url 'core:institution_list' %}">Institutions</a></li>
+                <li class="left"><a
+                    {% if request.resolver_match.url_name in 'institution_type_list,institution_type_detail' %}
+                        class="active"
+                    {% endif %}
+                    href="{% url 'core:institution_type_list' %}">Institution types</a></li>
+                <li class="left"><a
+                    {% if request.resolver_match.url_name in 'category_list,category_detail' %}
+                        class="active"
+                    {% endif %}
+                    href="{% url 'core:category_list' %}">Categories</a></li>
+                <li class="left"><a
+                    {% if request.resolver_match.url_name in 'document_type_list,document_type_detail' %}
+                        class="active"
+                    {% endif %}
+                    href="{% url 'core:document_type_list' %}">Document types</a></li>
                 <li class="right"><a href="{% url 'logout' %}">Logout</a></li>
                 <li class="right"><a
                     {% if request.resolver_match.url_name == 'password_change' %}

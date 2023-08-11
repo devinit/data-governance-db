@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ documenttype }}{% endblock %}
+{% block content %}
+    <h1>{{ documenttype }}</h1>
+    <h2>Details</h2>
+    <table class="green small">
+        <tbody>
+            <tr>
+                <td>
+                    <b>ID</b>
+                </td>
+                <td>{{ documenttype.id }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Name</b>
+                </td>
+                <td>{{ documenttype.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

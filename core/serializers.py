@@ -1,7 +1,12 @@
 from django.urls import path, include
 from rest_framework import permissions, routers, serializers, viewsets
-# from .models import ...
-
+from .models import (
+    Document,
+    Institution,
+    InstitutionType,
+    Category,
+    DocumentType
+)
 
 
 class CoreSerializer(serializers.HyperlinkedModelSerializer):
@@ -14,18 +19,74 @@ class CoreSerializer(serializers.HyperlinkedModelSerializer):
             return expanded_fields
 
 
-# class ClientSerializer(CoreSerializer):
-#     class Meta:
-#         model = Client
-#         fields = '__all__'
-#         lookup_field = 'code'
+class DocumentSerializer(CoreSerializer):
+    class Meta:
+        model = Document
+        fields = '__all__'
+        lookup_field = 'id'
 
 
-# class ClientViewSet(viewsets.ModelViewSet):
-#     queryset = Client.objects.all()
-#     serializer_class = ClientSerializer
-#     permission_classes = [permissions.IsAuthenticated, permissions.DjangoModelPermissions]
+class DocumentViewSet(viewsets.ModelViewSet):
+    queryset = Document.objects.all()
+    serializer_class = DocumentSerializer
+    permission_classes = [permissions.IsAuthenticated, permissions.DjangoModelPermissions]
+
+
+class InstitutionSerializer(CoreSerializer):
+    class Meta:
+        model = Institution
+        fields = '__all__'
+        lookup_field = 'id'
+
+
+class InstitutionViewSet(viewsets.ModelViewSet):
+    queryset = Institution.objects.all()
+    serializer_class = InstitutionSerializer
+    permission_classes = [permissions.IsAuthenticated, permissions.DjangoModelPermissions]
+
+
+class InstitutionTypeSerializer(CoreSerializer):
+    class Meta:
+        model = InstitutionType
+        fields = '__all__'
+        lookup_field = 'id'
+
+
+class InstitutionTypeViewSet(viewsets.ModelViewSet):
+    queryset = InstitutionType.objects.all()
+    serializer_class = InstitutionTypeSerializer
+    permission_classes = [permissions.IsAuthenticated, permissions.DjangoModelPermissions]
+
+
+class CategorySerializer(CoreSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
+        lookup_field = 'id'
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [permissions.IsAuthenticated, permissions.DjangoModelPermissions]
+
+
+class DocumentTypeSerializer(CoreSerializer):
+    class Meta:
+        model = DocumentType
+        fields = '__all__'
+        lookup_field = 'id'
+
+
+class DocumentTypeViewSet(viewsets.ModelViewSet):
+    queryset = DocumentType.objects.all()
+    serializer_class = DocumentTypeSerializer
+    permission_classes = [permissions.IsAuthenticated, permissions.DjangoModelPermissions]
 
 
 router = routers.DefaultRouter()
-# router.register(r'clients', ClientViewSet)
+router.register(r'Documents', DocumentViewSet)
+router.register(r'Institutions', InstitutionViewSet)
+router.register(r'InstitutionTypes', InstitutionTypeViewSet)
+router.register(r'Categories', CategoryViewSet)
+router.register(r'DocumentTypes', DocumentViewSet)
