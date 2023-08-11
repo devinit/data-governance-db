@@ -13,7 +13,7 @@
             {% for category in category_list %}
                 <tr>
                     <td>
-                        <a href="{% url 'core:institution_type_detail' category.id %}">{{ category.id }}</a>
+                        <a href="{% url 'core:category_detail' category.id %}">{{ category.id }}</a>
                     </td>
                     <td>{{ category.name }}</td>
                 </tr>

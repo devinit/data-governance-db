@@ -13,7 +13,7 @@
             {% for documenttype in documenttype_list %}
                 <tr>
                     <td>
-                        <a href="{% url 'core:institution_type_detail' documenttype.id %}">{{ documenttype.id }}</a>
+                        <a href="{% url 'core:document_type_detail' documenttype.id %}">{{ documenttype.id }}</a>
                     </td>
                     <td>{{ documenttype.name }}</td>
                 </tr>
