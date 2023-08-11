@@ -85,8 +85,8 @@ class DocumentTypeViewSet(viewsets.ModelViewSet):
 
 
 router = routers.DefaultRouter()
-router.register(r'Documents', DocumentViewSet)
-router.register(r'Institutions', InstitutionViewSet)
-router.register(r'InstitutionTypes', InstitutionTypeViewSet)
-router.register(r'Categories', CategoryViewSet)
-router.register(r'DocumentTypes', DocumentViewSet)
+router.register(r'documents', DocumentViewSet)
+router.register(r'institutions', InstitutionViewSet)
+router.register(r'institution-types', InstitutionTypeViewSet)
+router.register(r'categories', CategoryViewSet)
+router.register(r'document-types', DocumentTypeViewSet)
