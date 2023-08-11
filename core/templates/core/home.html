@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+
+{% block title %}Django project template{% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1>Django project template</h1>
+        <p>Welcome to the Django project template.</p>
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">register</a> to continue.</p>
+    {% endif %}
+{% endblock %}

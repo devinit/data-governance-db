@@ -1,0 +1,229 @@
+body {
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+table.green {
+    border: 2px solid #4F7849;
+    background-color: #EEEEEE;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+table.small {
+    width: auto;
+}
+table.green td, table.green th {
+    border: 1px solid #4F7849;
+    padding: 3px 2px;
+}
+table.green th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+table.green th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+}
+table.green td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+table.green td:not(.warning-cell){
+    background-color: #EEEEEE;
+}
+table.small td {
+    padding: 3px 10px;
+}
+table.green tbody td {
+    font-size: 19px;
+    color: #4F7849;
+}
+table.green tr:nth-child(even), table.green tr:nth-child(even) td:not(.warning-cell) {
+    background: #CEE0CC;
+}
+table.green thead, table.green th {
+    font-size: 21px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #4F7849;
+    background: -moz-linear-gradient(top, #7b9a76 0%, #60855b 66%, #4F7849 100%);
+    background: -webkit-linear-gradient(top, #7b9a76 0%, #60855b 66%, #4F7849 100%);
+    background: linear-gradient(to bottom, #7b9a76 0%, #60855b 66%, #4F7849 100%);
+    border-top: 1px solid #444444;
+    text-align: center;
+}
+table.green thead td {
+    font-size: 21px;
+}
+
+/* Sortable tables */
+table.sortable thead {
+    cursor: pointer;
+}
+
+table input, table select {
+    border:none;
+    height:100%;
+    width:100%;
+    padding:0px;
+    background-color: transparent;
+    font-size:19px;
+}
+
+.overflow {
+    /* overflow: scroll; */
+}
+
+.errorlist
+{
+    color: red;
+}
+
+.warninglist
+{
+    color: red;
+}
+
+.warning-cell {
+    background-color: red;
+    color: white !important;
+}
+.warning-cell-blue {
+    background-color: deepskyblue;
+}
+
+.bid-row td {
+    color: darkorange !important;
+}
+
+
+.input-regular{
+    font-size: 19px;
+}
+.input-placeholder{
+    opacity: 1;
+    font-style: italic;
+    font-size: 15px;
+    color: #0071bc;
+}
+
+.legend{
+    display: inline-block;
+    padding: 5px;
+    margin: 5px 0 5px 0;
+    border: 2px solid #4F7849;
+    border-radius: 5px;
+}
+.legend-title{
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.error input, .error select {
+    border: 2px red solid;
+}
+
+ul.header {
+    list-style-type: none;
+    margin: 0 0 10px 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.header li.left {
+    float: left;
+}
+
+ul.header li.right {
+    float: right;
+}
+
+
+ul.header li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.header li a:hover {
+    background-color: #111;
+}
+
+ul.header li a.active {
+    background-color: #04AA6D;
+}
+
+.button {
+    cursor: pointer;
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+}
+
+.active-button{
+    background-color: #333;
+    cursor: default;
+}
+
+.small-button{
+    padding: 5px 9px 5px 9px;
+}
+
+.button:hover:not(.active-button) {
+    background-color: #059862;
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+div.button-row{
+    display: flex;
+    margin-bottom: 8px;
+}
+
+div.button-row form, div.button-row a {
+    float:left;
+    margin-block-end: 0;
+    margin-right: 5px;
+}
+
+h2 select {
+    font-size: 1em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+h2.no-margin {
+    margin: 0 1em 0 0;
+}
+h2.no-margin input{
+    font-size: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    margin-right: 10px
+}
+
+.nowrap{
+    white-space: nowrap;
+}

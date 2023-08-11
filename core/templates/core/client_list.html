@@ -1,0 +1,48 @@
+{% extends "core/base.html" %}
+
+{% block title %}Clients{% endblock %}
+{% block content %}
+    {% if request.GET.all %}
+    <div class="button-row">
+        <a class="button" href="?all=">Show active</a>
+    </div>
+    {% else %}
+    <div class="button-row">
+        <a class="button" href="?all=True">Show all</a>
+    </div>
+    {% endif %}
+    <table class="green sortable">
+        <thead>
+            <tr>
+                <th>Client code</th>
+                <th>Client name</th>
+                <th>Projects in preparation</th>
+                <th>Projects submitted</th>
+                <th>Projects won</th>
+                <th>Projects lost</th>
+                <th>Projects active</th>
+                <th>Projects complete</th>
+                <th>Projects cancelled</th>
+                <th>Projects without status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in client_list %}
+                <tr>
+                    <td>
+                        <a href="{% url 'core:client' client.code %}">{{ client.code }}</a>
+                    </td>
+                    <td>{{ client }}</td>
+                    <td>{{ client.projects_prepared.count }}</td>
+                    <td>{{ client.projects_submitted.count }}</td>
+                    <td>{{ client.projects_won.count }}</td>
+                    <td>{{ client.projects_lost.count }}</td>
+                    <td>{{ client.projects_active.count }}</td>
+                    <td>{{ client.projects_complete.count }}</td>
+                    <td>{{ client.projects_cancelled.count }}</td>
+                    <td>{{ client.projects_statusless.count }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

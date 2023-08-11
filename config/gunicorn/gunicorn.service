@@ -1,0 +1,18 @@
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=website
+Group=www-data
+WorkingDirectory=/home/website/django-project-template
+ExecStart=/home/website/django-project-template/venv/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --timeout 600 \
+          --bind unix:/run/gunicorn.sock \
+          website.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

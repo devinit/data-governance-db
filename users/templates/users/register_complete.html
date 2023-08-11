@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+
+{% block title %}Registration complete{% endblock %}
+
+{% block content %}
+    {% if validlink %}
+        <h1>You've successfully registered!</h1>
+        <p>Congratulations on registering a user account. <a href="{% url 'login' %}">Log in</a> to check out the rest of the website.</p>
+    {% else %}
+        <h1>Account activation failed</h1>
+        <p>The activation link was invalid; it may have expired. Please contact a site administrator for assistance.</p>
+    {% endif %}
+{% endblock %}
