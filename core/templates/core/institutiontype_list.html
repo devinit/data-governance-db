@@ -2,20 +2,31 @@
 
 {% block title %}Institution types{% endblock %}
 {% block content %}
+    <div class="button-row">
+        {% if perms.core.add_institutiontype %}
+            <a class="button" href="{% url 'core:institution_type_add' %}">Add a new institution type</a>
+        {% endif %}
+    </div>
     <table class="green sortable">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
+                <th>Institution type</th>
+                <th>Number of institutions</th>
             </tr>
         </thead>
         <tbody>
             {% for institutiontype in institutiontype_list %}
                 <tr>
                     <td>
-                        <a href="{% url 'core:institution_type_detail' institutiontype.id %}">{{ institutiontype.id }}</a>
+                        <a 
+                        {% if perms.core.change_institutiontype or perms.core.delete_institutiontype %}
+                            href="{% url 'core:institution_type_detail' institutiontype.id %}"
+                        {% else %}
+                            href="{% url 'core:institution_list' %}?type={{ institutiontype.id }}"
+                        {% endif %}
+                        >{{ institutiontype }}</a>
                     </td>
-                    <td>{{ institutiontype.name }}</td>
+                    <td>{{ institutiontype.institutions.count }}</td>
                 </tr>
             {% endfor %}
         </tbody>

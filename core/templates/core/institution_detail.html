@@ -3,6 +3,17 @@
 {% block title %}{{ institution }}{% endblock %}
 {% block content %}
     <h1>{{ institution }}</h1>
+    <div class="button-row">
+        {% if perms.core.change_institution %}
+            <a class="button" href="{% url 'core:institution_edit' institution.id %}">Edit</a>
+        {% endif %}
+        {% if perms.core.delete_institution %}
+            <form method="POST" action="{% url 'core:institution_delete' institution.id %}">
+                {% csrf_token %}
+                <button class="button" onclick="return confirm('This cannot be undone. Are you sure?')">Delete</button>
+            </form>
+        {% endif %}
+    </div>
     <h2>Details</h2>
     <table class="green small">
         <tbody>
@@ -16,7 +27,11 @@
                 <td>
                     <b>Name</b>
                 </td>
-                <td>{{ institution.name }}</td>
+                <td>
+                    <a href="{% url 'core:document_list' %}?institution={{ institution.id }}">
+                        {{ institution.name }}
+                    </a>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -24,7 +39,13 @@
                 </td>
                 {% if institution.type %}
                     <td>
-                        <a href="{% url 'core:institution_type_detail' institution.type.id %}">
+                        <a 
+                        {% if perms.core.change_institutiontype or perms.core.delete_institutiontype %}
+                            href="{% url 'core:institution_type_detail' institution.type.id %}"
+                        {% else %}
+                            href="{% url 'core:institution_list' %}?type={{ institution.type.id }}"
+                        {% endif %}
+                        >
                             {{ institution.type }}
                         </a>
                     </td>

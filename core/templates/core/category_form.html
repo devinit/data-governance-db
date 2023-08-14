@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+    {% if category %}
+        Edit: {{ category }}
+    {% else %}
+        Add category
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <h1>
+        {% if category %}
+            Edit: {{ category }}
+        {% else %}
+            Add category
+        {% endif %}
+    </h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="button">Save</button>
+    </form>
+{% endblock %}

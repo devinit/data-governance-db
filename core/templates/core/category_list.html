@@ -2,20 +2,31 @@
 
 {% block title %}Categories{% endblock %}
 {% block content %}
+    <div class="button-row">
+        {% if perms.core.add_category %}
+            <a class="button" href="{% url 'core:category_add' %}">Add a new category</a>
+        {% endif %}
+    </div>
     <table class="green sortable">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
+                <th>Category</th>
+                <th>Number of documents</th>
             </tr>
         </thead>
         <tbody>
             {% for category in category_list %}
                 <tr>
                     <td>
-                        <a href="{% url 'core:category_detail' category.id %}">{{ category.id }}</a>
+                        <a 
+                        {% if perms.core.change_category or perms.core.delete_category %}
+                            href="{% url 'core:category_detail' category.id %}"
+                        {% else %}
+                            href="{% url 'core:document_list' %}?category={{ category.id }}"
+                        {% endif %}
+                        >{{ category }}</a>
                     </td>
-                    <td>{{ category.name }}</td>
+                    <td>{{ category.documents.count }}</td>
                 </tr>
             {% endfor %}
         </tbody>

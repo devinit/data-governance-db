@@ -3,6 +3,17 @@
 {% block title %}{{ category }}{% endblock %}
 {% block content %}
     <h1>{{ category }}</h1>
+    <div class="button-row">
+        {% if perms.core.change_category %}
+            <a class="button" href="{% url 'core:category_edit' category.id %}">Edit</a>
+        {% endif %}
+        {% if perms.core.delete_category %}
+            <form method="POST" action="{% url 'core:category_delete' category.id %}">
+                {% csrf_token %}
+                <button class="button" onclick="return confirm('This cannot be undone. Are you sure?')">Delete</button>
+            </form>
+        {% endif %}
+    </div>
     <h2>Details</h2>
     <table class="green small">
         <tbody>
@@ -16,7 +27,11 @@
                 <td>
                     <b>Name</b>
                 </td>
-                <td>{{ category.name }}</td>
+                <td>
+                    <a href="{% url 'core:document_list' %}?category={{ category.id }}">
+                        {{ category.name }}
+                    </a>
+                </td>
             </tr>
         </tbody>
     </table>

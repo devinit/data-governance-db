@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+    {% if institutiontype %}
+        Edit: {{ institutiontype }}
+    {% else %}
+        Add institutiontype
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <h1>
+        {% if institutiontype %}
+            Edit: {{ institutiontype }}
+        {% else %}
+            Add institution type
+        {% endif %}
+    </h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="button">Save</button>
+    </form>
+{% endblock %}

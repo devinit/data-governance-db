@@ -2,30 +2,44 @@
 
 {% block title %}Institutions{% endblock %}
 {% block content %}
+    <div class="button-row">
+        {% if perms.core.add_institution %}
+            <a class="button" href="{% url 'core:institution_add' %}">Add a new institution</a>
+        {% endif %}
+        {% if request.GET.keys|length > 0 %}
+            <a class="button" href="{% url 'core:institution_list' %}">Clear filters</a>
+        {% endif %}
+    </div>
     <table class="green sortable">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
+                <th>Institution</th>
                 <th>Type</th>
+                <th>Number of documents</th>
             </tr>
         </thead>
         <tbody>
             {% for institution in institution_list %}
                 <tr>
                     <td>
-                        <a href="{% url 'core:institution_detail' institution.id %}">{{ institution.id }}</a>
+                        <a 
+                        {% if perms.core.change_institution or perms.core.delete_institution %}
+                            href="{% url 'core:institution_detail' institution.id %}"
+                        {% else %}
+                            href="{% url 'core:document_list' %}?institution={{ institution.id }}"
+                        {% endif %}
+                        >{{ institution }}</a>
                     </td>
-                    <td>{{ institution.name }}</td>
                     {% if institution.type %}
                         <td>
-                            <a href="{% url 'core:institution_type_detail' institution.type.id %}">
+                            <a href="{% url 'core:institution_list' %}?type={{ institution.type.id }}">
                                 {{ institution.type }}
                             </a>
                         </td>
                     {% else %}
                         <td></td>
                     {% endif %}
+                    <td>{{ institution.documents.count }}</td>
                 </tr>
             {% endfor %}
         </tbody>

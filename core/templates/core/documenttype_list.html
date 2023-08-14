@@ -2,20 +2,31 @@
 
 {% block title %}Document types{% endblock %}
 {% block content %}
+    <div class="button-row">
+        {% if perms.core.add_documenttype %}
+            <a class="button" href="{% url 'core:document_type_add' %}">Add a new document type</a>
+        {% endif %}
+    </div>
     <table class="green sortable">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
+                <th>Document type</th>
+                <th>Number of documents</th>
             </tr>
         </thead>
         <tbody>
             {% for documenttype in documenttype_list %}
                 <tr>
                     <td>
-                        <a href="{% url 'core:document_type_detail' documenttype.id %}">{{ documenttype.id }}</a>
+                        <a 
+                        {% if perms.core.change_documenttype or perms.core.delete_documenttype %}
+                            href="{% url 'core:document_type_detail' documenttype.id %}"
+                        {% else %}
+                            href="{% url 'core:document_list' %}?type={{ documenttype.id }}"
+                        {% endif %}
+                        >{{ documenttype }}</a>
                     </td>
-                    <td>{{ documenttype.name }}</td>
+                    <td>{{ documenttype.documents.count }}</td>
                 </tr>
             {% endfor %}
         </tbody>

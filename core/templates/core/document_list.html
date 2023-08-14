@@ -32,7 +32,7 @@
                         </td>
                         {% if document.institution %}
                             <td>
-                                <a href="?institution={{ document.institution.id }}{% for key,value in request.GET.items %}{% if key != 'institution' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">
+                                <a href="?institution={{ document.institution.id }}{% for key,value in request.GET.items %}{% if key != 'institution' and key != 'p' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">
                                     {{ document.institution }}
                                 </a>
                             </td>
@@ -41,7 +41,7 @@
                         {% endif %}
                         {% if document.category %}
                             <td>
-                                <a href="?category={{ document.category.id }}{% for key,value in request.GET.items %}{% if key != 'category' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">
+                                <a href="?category={{ document.category.id }}{% for key,value in request.GET.items %}{% if key != 'category' and key != 'p' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">
                                     {{ document.category }}
                                 </a>
                             </td>
@@ -50,7 +50,7 @@
                         {% endif %}
                         {% if document.type %}
                             <td>
-                                <a href="?type={{ document.type.id }}{% for key,value in request.GET.items %}{% if key != 'type' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">
+                                <a href="?type={{ document.type.id }}{% for key,value in request.GET.items %}{% if key != 'type' and key != 'p' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">
                                     {{ document.type }}
                                 </a>
                             </td>
@@ -63,5 +63,21 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% block pagination %}
+            <div class="pagination">
+                {% for page_number in document_list.paginator.get_elided_page_range %}
+                    {% if page_number == document_list.paginator.ELLIPSIS %}
+                        {{page_number}}
+                    {% else %}
+                        <a
+                            href="?p={{ page_number }}{% for key,value in request.GET.items %}{% if key != 'p' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}"
+                            class="{% if page_number == document_list.number %}active{% endif %}"
+                        >
+                            {{page_number}}
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endblock %}
     {% endif %}
 {% endblock %}

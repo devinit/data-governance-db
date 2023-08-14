@@ -46,3 +46,59 @@ class DocumentForm(forms.ModelForm):
                 attrs={'rows': 1, 'required': True}
             ),
         }
+
+
+class InstitutionForm(forms.ModelForm):
+    class Meta:
+        model = Institution
+        fields = [
+            'name',
+            'type'
+        ]
+        widgets = {
+            'name': forms.Textarea(
+                attrs={'rows': 1, 'required': True}
+            ),
+            'type': forms.Select(
+                attrs={'required': True}
+            ),
+        }
+
+
+class InstitutionTypeForm(forms.ModelForm):
+    class Meta:
+        model = InstitutionType
+        fields = [
+            'name',
+        ]
+        widgets = {
+            'name': forms.Textarea(
+                attrs={'rows': 1, 'required': True}
+            ),
+        }
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = [
+            'name',
+        ]
+        widgets = {
+            'name': forms.Textarea(
+                attrs={'rows': 1, 'required': True}
+            ),
+        }
+
+
+class DocumentTypeForm(forms.ModelForm):
+    class Meta:
+        model = DocumentType
+        fields = [
+            'name',
+        ]
+        widgets = {
+            'name': forms.Textarea(
+                attrs={'rows': 1, 'required': True}
+            ),
+        }

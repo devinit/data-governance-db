@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+    {% if documenttype %}
+        Edit: {{ documenttype }}
+    {% else %}
+        Add documenttype
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <h1>
+        {% if documenttype %}
+            Edit: {{ documenttype }}
+        {% else %}
+            Add document type
+        {% endif %}
+    </h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="button">Save</button>
+    </form>
+{% endblock %}

@@ -227,3 +227,25 @@ h2.no-margin input{
 .nowrap{
     white-space: nowrap;
 }
+
+.pagination {
+    display: inline-block;
+    padding-top: 5px;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color .3s;
+}
+
+.pagination a.active {
+    background-color: #04AA6D;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
