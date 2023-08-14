@@ -35,7 +35,7 @@
                 </td>
                 {% if document.institution %}
                     <td>
-                        <a href="{% url 'core:institution_detail' document.institution.id %}">
+                        <a href="{% url 'core:document_list' %}?institution={{ document.institution.id }}">
                             {{ document.institution }}
                         </a>
                     </td>
@@ -49,7 +49,7 @@
                 </td>
                 {% if document.category %}
                     <td>
-                        <a href="{% url 'core:category_detail' document.category.id %}">
+                        <a href="{% url 'core:document_list' %}?category={{ document.category.id }}">
                             {{ document.category }}
                         </a>
                     </td>
@@ -63,7 +63,7 @@
                 </td>
                 {% if document.type %}
                     <td>
-                        <a href="{% url 'core:document_type_detail' document.type.id %}">
+                        <a href="{% url 'core:document_list' %}?type={{ document.type.id }}">
                             {{ document.type }}
                         </a>
                     </td>

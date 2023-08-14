@@ -21,6 +21,19 @@ class Home(generic.TemplateView):
 class DocumentList(LoginRequiredMixin, generic.ListView):
     model = Document
 
+    def get_queryset(self):
+        institution_param = self.request.GET.get('institution', None)
+        category_param = self.request.GET.get('category', None)
+        type_param = self.request.GET.get('type', None)
+        documents = Document.objects.all()
+        if institution_param is not None:
+            documents = documents.filter(institution__id=institution_param)
+        if category_param is not None:
+            documents = documents.filter(category__id=category_param)
+        if type_param is not None:
+            documents = documents.filter(type__id=type_param)
+        return documents
+
 
 class DocumentDetail(LoginRequiredMixin, generic.DetailView):
     model = Document
