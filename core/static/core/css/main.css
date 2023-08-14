@@ -38,14 +38,14 @@ table.small td {
     padding: 3px 10px;
 }
 table.green tbody td {
-    font-size: 19px;
+    font-size: 16px;
     color: #4F7849;
 }
 table.green tr:nth-child(even), table.green tr:nth-child(even) td:not(.warning-cell) {
     background: #CEE0CC;
 }
 table.green thead, table.green th {
-    font-size: 21px;
+    font-size: 18px;
     font-weight: bold;
     color: #FFFFFF;
     background: #4F7849;
@@ -56,7 +56,7 @@ table.green thead, table.green th {
     text-align: center;
 }
 table.green thead td {
-    font-size: 21px;
+    font-size: 18px;
 }
 
 /* Sortable tables */
