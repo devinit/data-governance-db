@@ -9,6 +9,9 @@ from .models import (
     Category,
     DocumentType
 )
+from .forms import (
+    DocumentForm
+)
 
 
 class Home(generic.TemplateView):
@@ -21,6 +24,32 @@ class DocumentList(LoginRequiredMixin, generic.ListView):
 
 class DocumentDetail(LoginRequiredMixin, generic.DetailView):
     model = Document
+
+
+class DocumentAdd(LoginRequiredMixin, PermissionRequiredMixin, generic.CreateView):
+    model = Document
+    form_class = DocumentForm
+    permission_required = 'core.add_document'
+
+    def get_success_url(self):
+        return reverse('core:document_detail', kwargs={'pk': self.object.pk})
+
+
+class DocumentDelete(LoginRequiredMixin, PermissionRequiredMixin, generic.DeleteView):
+    model = Document
+    permission_required = 'core.delete_document'
+
+    def get_success_url(self):
+        return reverse('core:document_list')
+
+
+class DocumentEdit(LoginRequiredMixin, PermissionRequiredMixin, generic.UpdateView):
+    model = Document
+    form_class = DocumentForm
+    permission_required = 'planner.change_document'
+
+    def get_success_url(self):
+        return reverse('core:document_detail', kwargs={'pk': self.object.pk})
 
 
 class InstitutionList(LoginRequiredMixin, generic.ListView):

@@ -2,6 +2,11 @@
 
 {% block title %}Documents{% endblock %}
 {% block content %}
+    <div class="button-row">
+        {% if perms.core.add_document %}
+            <a class="button" href="{% url 'core:document_add' %}">Add a new document</a>
+        {% endif %}
+    </div>
     <table class="green sortable">
         <thead>
             <tr>

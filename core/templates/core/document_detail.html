@@ -3,6 +3,17 @@
 {% block title %}{{ document }}{% endblock %}
 {% block content %}
     <h1>{{ document }}</h1>
+    <div class="button-row">
+        {% if perms.core.change_document %}
+            <a class="button" href="{% url 'core:document_edit' document.id %}">Edit</a>
+        {% endif %}
+        {% if perms.core.delete_document %}
+            <form method="POST" action="{% url 'core:document_delete' document.id %}">
+                {% csrf_token %}
+                <button class="button" onclick="return confirm('This cannot be undone. Are you sure?')">Delete</button>
+            </form>
+        {% endif %}
+    </div>
     <h2>Details</h2>
     <table class="green small">
         <tbody>

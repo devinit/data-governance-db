@@ -1,5 +1,4 @@
 from django.urls import path
-from django.contrib.admin.views.decorators import staff_member_required
 
 from . import views
 
@@ -9,6 +8,9 @@ urlpatterns = [
     path('', views.Home.as_view(), name='home'),
     path('documents', views.DocumentList.as_view(), name='document_list'),
     path('documents/<int:pk>', views.DocumentDetail.as_view(), name='document_detail'),
+    path('documents/add', views.DocumentAdd.as_view(), name='document_add'),
+    path('documents/<int:pk>/delete', views.DocumentDelete.as_view(), name='document_delete'),
+    path('documents/<int:pk>/edit', views.DocumentEdit.as_view(), name='document_edit'),
     path('institutions', views.InstitutionList.as_view(), name='institution_list'),
     path('institutions/<int:pk>', views.InstitutionDetail.as_view(), name='institution_detail'),
     path('institution-types', views.InstitutionTypeList.as_view(), name='institution_type_list'),
