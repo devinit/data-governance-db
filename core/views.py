@@ -44,7 +44,7 @@ class DocumentList(LoginRequiredMixin, generic.ListView):
         documents = self.get_queryset()
 
         page_param = self.request.GET.get('p', 1)
-        paginator = Paginator(documents, 20)
+        paginator = Paginator(documents, 100)
         context['document_list'] = paginator.get_page(page_param)
 
         return context
