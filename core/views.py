@@ -30,7 +30,7 @@ class DocumentList(LoginRequiredMixin, generic.ListView):
         institution_param = self.request.GET.get('institution', None)
         category_param = self.request.GET.get('category', None)
         type_param = self.request.GET.get('type', None)
-        documents = Document.objects.all().order_by('title')
+        documents = Document.objects.all().order_by('institution__name', 'category__name')
         if institution_param is not None:
             documents = documents.filter(institution__id=institution_param)
         if category_param is not None:

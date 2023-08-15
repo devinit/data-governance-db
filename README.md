@@ -63,7 +63,6 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 python3 manage.py migrate
 python3 manage.py collectstatic
-python3 manage.py initial_import
 exit
 sudo systemctl restart gunicorn
 ```
