@@ -47,6 +47,12 @@ class DocumentForm(forms.ModelForm):
             ),
         }
 
+    def __init__(self, *args, **kwargs):
+        super(DocumentForm, self).__init__(*args, **kwargs)
+        self.fields['institution'].queryset = self.fields['institution'].queryset.order_by('name')
+        self.fields['category'].queryset = self.fields['category'].queryset.order_by('name')
+        self.fields['type'].queryset = self.fields['type'].queryset.order_by('name')
+
 
 class InstitutionForm(forms.ModelForm):
     class Meta:
@@ -63,6 +69,10 @@ class InstitutionForm(forms.ModelForm):
                 attrs={'required': True}
             ),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(InstitutionForm, self).__init__(*args, **kwargs)
+        self.fields['type'].queryset = self.fields['type'].queryset.order_by('name')
 
 
 class InstitutionTypeForm(forms.ModelForm):
