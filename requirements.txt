@@ -2,6 +2,7 @@ asgiref==3.7.2
 # backports.zoneinfobackports.zoneinfo;python_version<"3.9"
 Django==4.2.4
 django-filter==23.2
+django-import-export==3.2.0
 djangorestframework==3.14.0
 gunicorn==21.2.0
 importlib-metadata==6.8.0
