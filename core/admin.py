@@ -9,6 +9,9 @@ from .models import (
     Category,
     DocumentType
 )
+from import_export import fields, resources
+from import_export.widgets import ForeignKeyWidget
+from import_export.admin import ImportExportModelAdmin
 
 
 class LogEntryAdmin(admin.ModelAdmin):
@@ -46,9 +49,38 @@ class CustomUserAdmin(BaseUserAdmin):
         return ','.join([g.name for g in obj.groups.all()]) if obj.groups.count() else ''
 
 
+class DocumentResource(resources.ModelResource):
+
+    institution = fields.Field(
+        column_name='institution',
+        attribute='institution',
+        widget=ForeignKeyWidget(Institution, 'name')
+    )
+    category = fields.Field(
+        column_name='category',
+        attribute='category',
+        widget=ForeignKeyWidget(Category, 'name')
+    )
+    type = fields.Field(
+        column_name='type',
+        attribute='type',
+        widget=ForeignKeyWidget(DocumentType, 'name')
+    )
+
+    class Meta:
+        model = Document
+        skip_unchanged = True
+        report_skipped = False
+        fields = ('id', 'institution', 'category', 'type', 'title', 'year', 'publisher', 'note', 'url')
+
+
+class CustomDocumentAdmin(ImportExportModelAdmin):
+    resource_class = DocumentResource
+
+
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
-admin.site.register(Document)
+admin.site.register(Document, CustomDocumentAdmin)
 admin.site.register(Institution)
 admin.site.register(InstitutionType)
 admin.site.register(Category)
