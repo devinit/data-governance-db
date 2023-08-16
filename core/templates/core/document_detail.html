@@ -1,4 +1,6 @@
 {% extends "core/base.html" %}
+{% load core_tags %}
+
 
 {% block title %}{{ document }}{% endblock %}
 {% block content %}
@@ -93,14 +95,14 @@
                 <td>
                     <b>URL</b>
                 </td>
-                {% if document.url %}
+                {% if document.url|is_valid_url %}
                     <td>
                         <a href="{{document.url}}" target="_blank">
                             {{ document.url }}
                         </a>
                     </td>
                 {% else %}
-                    <td></td>
+                    <td>This document is known to exist but is currently not available.</td>
                 {% endif %}
             </tr>
         </tbody>

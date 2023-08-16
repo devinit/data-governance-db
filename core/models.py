@@ -1,5 +1,18 @@
 from django.db import models
 from django.urls import reverse
+from django.core.validators import URLValidator
+
+
+def validate_url(value):
+    na_variations = [
+        "n.a.",
+        "na",
+        "na."
+        "n.a"
+    ]
+    if not str(value).lower() in na_variations:
+        validator = URLValidator()
+        validator(value)
 
 
 class Document(models.Model):
@@ -50,10 +63,11 @@ class Document(models.Model):
         null = True
     )
 
-    url = models.URLField(
-        max_length = 9999,
+    url = models.TextField(
         blank = True,
-        null = True
+        null = True,
+        help_text='Enter either a valid URL, or "n.a." if not available.',
+        validators = [validate_url]
     )
 
 

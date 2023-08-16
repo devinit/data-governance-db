@@ -249,3 +249,8 @@ h2.no-margin input{
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
+
+.helptext {
+    color: grey;
+    font-size: 15px;
+}
