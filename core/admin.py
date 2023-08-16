@@ -51,28 +51,12 @@ class CustomUserAdmin(BaseUserAdmin):
 
 class DocumentResource(resources.ModelResource):
 
-    institution = fields.Field(
-        column_name='institution',
-        attribute='institution',
-        widget=ForeignKeyWidget(Institution, 'name')
-    )
-    category = fields.Field(
-        column_name='category',
-        attribute='category',
-        widget=ForeignKeyWidget(Category, 'name')
-    )
-    type = fields.Field(
-        column_name='type',
-        attribute='type',
-        widget=ForeignKeyWidget(DocumentType, 'name')
-    )
-
     class Meta:
         model = Document
         skip_unchanged = True
         report_skipped = False
-        fields = ('id', 'institution', 'category', 'type', 'title', 'year', 'publisher', 'note', 'url')
-
+        fields = ('id', 'institution', 'institution__name', 'category', 'category__name', 'type', 'type__name', 'title', 'year', 'publisher', 'note', 'url')
+        export_order = ('id', 'institution', 'institution__name', 'category', 'category__name', 'type', 'type__name', 'title', 'year', 'publisher', 'note', 'url')
 
 class CustomDocumentAdmin(ImportExportModelAdmin):
     resource_class = DocumentResource
