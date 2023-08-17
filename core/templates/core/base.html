@@ -4,6 +4,16 @@
     <head>
         <title>{% block title %}{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{% static 'core/images/favicon.png' %}">
+        <style>
+            @font-face {
+                font-family: geomanist regular;
+                src: url("{% static 'core/fonts/geomanist-regular-webfont.woff' %}");
+            }
+            @font-face {
+                font-family: geomanist bold;
+                src: url("{% static 'core/fonts/geomanist-bold-webfont.woff' %}");
+            }
+        </style>
         <link rel="stylesheet" href="{% static 'core/css/main.css' %}">
         <script src="{% static 'core/js/sorttable.js' %}"></script>
         {% block headextra %}
@@ -11,6 +21,10 @@
     </head>
     <body>
         <ul class="header">
+            <li class="left"><a
+                href="https://devinit.org" target="_blank">
+                <img class="logo" src="{% static 'core/images/logo.webp' %}"/>
+            </a></li>
             <li class="left"><a
                 {% if request.resolver_match.url_name == 'home' %}
                     class="active"
@@ -58,6 +72,8 @@
                     <li class="right"><a href="{% url 'admin:index' %}">Admin</a></li>
                 {% endif %}
             {% else %}
+            <li class="right"><a
+                href="https://devinit.org/who-we-are/" target="_blank">About DI</a></li>
                 <li class="right"><a
                     {% if request.resolver_match.url_name == 'register' %}
                         class="active"
