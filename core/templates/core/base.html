@@ -64,6 +64,8 @@
                     href="{% url 'core:document_type_list' %}">Document types</a></li>
                 <li class="right"><a href="{% url 'logout' %}">Logout</a></li>
                 <li class="right"><a
+                    href="https://devinit.org/who-we-are/" target="_blank">About DI</a></li>
+                <li class="right"><a
                     {% if request.resolver_match.url_name == 'password_change' %}
                         class="active"
                     {% endif %}
@@ -72,8 +74,8 @@
                     <li class="right"><a href="{% url 'admin:index' %}">Admin</a></li>
                 {% endif %}
             {% else %}
-            <li class="right"><a
-                href="https://devinit.org/who-we-are/" target="_blank">About DI</a></li>
+                <li class="right"><a
+                    href="https://devinit.org/who-we-are/" target="_blank">About DI</a></li>
                 <li class="right"><a
                     {% if request.resolver_match.url_name == 'register' %}
                         class="active"
