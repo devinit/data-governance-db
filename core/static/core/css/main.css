@@ -2,7 +2,7 @@ body {
     font-family:geomanist regular,sans-serif;
 }
 
-table.green {
+table.red {
     border: 2px solid #6b120a;
     background-color: #EEEEEE;
     width: 100%;
@@ -12,47 +12,47 @@ table.green {
 table.small {
     width: auto;
 }
-table.green td, table.green th {
+table.red td, table.red th {
     border: 1px solid #8f1b13;
     padding: 3px 2px;
 }
-table.green th {
+table.red th {
     position: sticky;
     top: 0;
     z-index: 2;
 }
-table.green th:first-child {
+table.red th:first-child {
     position: sticky;
     left: 0;
     z-index: 3;
 }
-table.green td:first-child {
+table.red td:first-child {
     position: sticky;
     left: 0;
     z-index: 1;
 }
-table.green td:not(.warning-cell){
+table.red td:not(.warning-cell){
     background-color: #fbd7cb;
 }
 table.small td {
     padding: 3px 10px;
 }
-table.green tbody td {
+table.red tbody td {
     font-size: 16px;
     color: #6b120a;
 }
 
-table.green tbody td a, table.green tbody td a:visited {
+table.red tbody td a, table.red tbody td a:visited {
     font-size: 16px;
     color: #6b120a;
     text-decoration: none;
     font-weight: bold;
 }
 
-table.green tr:nth-child(even), table.green tr:nth-child(even) td:not(.warning-cell) {
+table.red tr:nth-child(even), table.red tr:nth-child(even) td:not(.warning-cell) {
     background: #EEEEEE;
 }
-table.green thead, table.green th {
+table.red thead, table.red th {
     font-size: 18px;
     font-weight: bold;
     color: #FFFFFF;
@@ -63,7 +63,7 @@ table.green thead, table.green th {
     border-top: 1px solid #444444;
     text-align: center;
 }
-table.green thead td {
+table.red thead td {
     font-size: 18px;
 }
 
