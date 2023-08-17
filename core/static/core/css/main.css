@@ -3,7 +3,7 @@ body {
 }
 
 table.green {
-    border: 2px solid #8f1b13;
+    border: 2px solid #6b120a;
     background-color: #EEEEEE;
     width: 100%;
     text-align: left;
@@ -39,8 +39,16 @@ table.small td {
 }
 table.green tbody td {
     font-size: 16px;
-    color: #8f1b13;
+    color: #6b120a;
 }
+
+table.green tbody td a, table.green tbody td a:visited {
+    font-size: 16px;
+    color: #6b120a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 table.green tr:nth-child(even), table.green tr:nth-child(even) td:not(.warning-cell) {
     background: #EEEEEE;
 }
@@ -229,7 +237,6 @@ h2.no-margin input{
 }
 
 .logo {
-    width: 194px;
-    height: 37px;
+    height: 25px;
     display: inline-block;
 }
