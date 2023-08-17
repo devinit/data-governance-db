@@ -4,6 +4,16 @@
     <head>
         <title>{% block title %}{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{% static 'core/images/favicon.png' %}">
+        <style>
+            @font-face {
+                font-family: geomanist regular;
+                src: url("{% static 'core/fonts/geomanist-regular-webfont.woff' %}");
+            }
+            @font-face {
+                font-family: geomanist bold;
+                src: url("{% static 'core/fonts/geomanist-bold-webfont.woff' %}");
+            }
+        </style>
         <link rel="stylesheet" href="{% static 'core/css/main.css' %}">
         <script src="{% static 'core/js/sorttable.js' %}"></script>
         {% block headextra %}
@@ -12,10 +22,14 @@
     <body>
         <ul class="header">
             <li class="left"><a
+                href="https://devinit.org" target="_blank">
+                <img class="logo" src="{% static 'core/images/logo.webp' %}"/>
+            </a></li>
+            <li class="left"><a
                 {% if request.resolver_match.url_name == 'home' %}
                     class="active"
                 {% endif %}
-                href="{% url 'core:home' %}">Home</a></li>
+                href="{% url 'core:home' %}">Data Governance DB</a></li>
             <li class="left">
                 <a target="_blank"
                     href="https://docs.google.com/document/d/1za7--nrfNzxn-X_yAWVVSer9_WF7L1340qJ-Uh0lNzI/edit?usp=sharing">
@@ -50,6 +64,8 @@
                     href="{% url 'core:document_type_list' %}">Document types</a></li>
                 <li class="right"><a href="{% url 'logout' %}">Logout</a></li>
                 <li class="right"><a
+                    href="https://devinit.org/who-we-are/" target="_blank">About DI</a></li>
+                <li class="right"><a
                     {% if request.resolver_match.url_name == 'password_change' %}
                         class="active"
                     {% endif %}
@@ -58,6 +74,8 @@
                     <li class="right"><a href="{% url 'admin:index' %}">Admin</a></li>
                 {% endif %}
             {% else %}
+                <li class="right"><a
+                    href="https://devinit.org/who-we-are/" target="_blank">About DI</a></li>
                 <li class="right"><a
                     {% if request.resolver_match.url_name == 'register' %}
                         class="active"

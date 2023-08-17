@@ -1,9 +1,9 @@
 body {
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:geomanist regular,sans-serif;
 }
 
-table.green {
-    border: 2px solid #4F7849;
+table.red {
+    border: 2px solid #6b120a;
     background-color: #EEEEEE;
     width: 100%;
     text-align: left;
@@ -12,50 +12,58 @@ table.green {
 table.small {
     width: auto;
 }
-table.green td, table.green th {
-    border: 1px solid #4F7849;
+table.red td, table.red th {
+    border: 1px solid #8f1b13;
     padding: 3px 2px;
 }
-table.green th {
+table.red th {
     position: sticky;
     top: 0;
     z-index: 2;
 }
-table.green th:first-child {
+table.red th:first-child {
     position: sticky;
     left: 0;
     z-index: 3;
 }
-table.green td:first-child {
+table.red td:first-child {
     position: sticky;
     left: 0;
     z-index: 1;
 }
-table.green td:not(.warning-cell){
-    background-color: #EEEEEE;
+table.red td:not(.warning-cell){
+    background-color: #fbd7cb;
 }
 table.small td {
     padding: 3px 10px;
 }
-table.green tbody td {
+table.red tbody td {
     font-size: 16px;
-    color: #4F7849;
+    color: #6b120a;
 }
-table.green tr:nth-child(even), table.green tr:nth-child(even) td:not(.warning-cell) {
-    background: #CEE0CC;
+
+table.red tbody td a, table.red tbody td a:visited {
+    font-size: 16px;
+    color: #6b120a;
+    text-decoration: none;
+    font-weight: bold;
 }
-table.green thead, table.green th {
+
+table.red tr:nth-child(even), table.red tr:nth-child(even) td:not(.warning-cell) {
+    background: #EEEEEE;
+}
+table.red thead, table.red th {
     font-size: 18px;
     font-weight: bold;
     color: #FFFFFF;
-    background: #4F7849;
-    background: -moz-linear-gradient(top, #7b9a76 0%, #60855b 66%, #4F7849 100%);
-    background: -webkit-linear-gradient(top, #7b9a76 0%, #60855b 66%, #4F7849 100%);
-    background: linear-gradient(to bottom, #7b9a76 0%, #60855b 66%, #4F7849 100%);
+    background: #8f1b13;
+    background: -moz-linear-gradient(top, #f0826d 0%, #bc2629 66%, #8f1b13 100%);
+    background: -webkit-linear-gradient(top, #f0826d 0%, #bc2629 66%, #8f1b13 100%);
+    background: linear-gradient(to bottom, #f0826d 0%, #bc2629 66%, #8f1b13 100%);
     border-top: 1px solid #444444;
     text-align: center;
 }
-table.green thead td {
+table.red thead td {
     font-size: 18px;
 }
 
@@ -71,10 +79,6 @@ table input, table select {
     padding:0px;
     background-color: transparent;
     font-size:19px;
-}
-
-.overflow {
-    /* overflow: scroll; */
 }
 
 .errorlist
@@ -99,29 +103,6 @@ table input, table select {
     color: darkorange !important;
 }
 
-
-.input-regular{
-    font-size: 19px;
-}
-.input-placeholder{
-    opacity: 1;
-    font-style: italic;
-    font-size: 15px;
-    color: #0071bc;
-}
-
-.legend{
-    display: inline-block;
-    padding: 5px;
-    margin: 5px 0 5px 0;
-    border: 2px solid #4F7849;
-    border-radius: 5px;
-}
-.legend-title{
-    text-align: center;
-    font-weight: bold;
-    text-decoration: underline;
-}
 
 .error input, .error select {
     border: 2px red solid;
@@ -157,12 +138,12 @@ ul.header li a:hover {
 }
 
 ul.header li a.active {
-    background-color: #04AA6D;
+    background-color: #e84439;
 }
 
 .button {
     cursor: pointer;
-    background-color: #04AA6D;
+    background-color: #e84439;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -185,7 +166,7 @@ ul.header li a.active {
 }
 
 .button:hover:not(.active-button) {
-    background-color: #059862;
+    background-color: #bc2629;
 }
 
 .disabled {
@@ -243,7 +224,7 @@ h2.no-margin input{
 }
 
 .pagination a.active {
-    background-color: #04AA6D;
+    background-color: #e84439;
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
 }
@@ -253,4 +234,9 @@ h2.no-margin input{
 .helptext {
     color: grey;
     font-size: 15px;
+}
+
+.logo {
+    height: 25px;
+    display: inline-block;
 }
