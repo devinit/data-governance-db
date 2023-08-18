@@ -6,6 +6,42 @@
         {% if perms.core.add_document %}
             <a class="button" href="{% url 'core:document_add' %}">Add a new document</a>
         {% endif %}
+        <select class="button" onchange="changeFilter(event, 'institution')">
+            <option value=""
+            {% if not institution_param %}selected{% endif %}
+            >Institution</option>
+            {% for institution in institutions %}
+                <option value="{{institution.id}}"
+                {% if institution.id == institution_param %}
+                    selected
+                {% endif %}
+                >{{institution}}</option>
+            {% endfor %}
+        </select>
+        <select class="button" onchange="changeFilter(event, 'category')">
+            <option value=""
+            {% if not category_param %}selected{% endif %}
+            >Category</option>
+            {% for category in categories %}
+                <option value="{{category.id}}"
+                {% if category.id == category_param %}
+                    selected
+                {% endif %}
+                >{{category}}</option>
+            {% endfor %}
+        </select>
+        <select class="button" onchange="changeFilter(event, 'type')">
+            <option value=""
+            {% if not type_param %}selected{% endif %}
+            >Document type</option>
+            {% for document_type in document_types %}
+                <option value="{{document_type.id}}"
+                {% if document_type.id == type_param %}
+                    selected
+                {% endif %}
+                >{{document_type}}</option>
+            {% endfor %}
+        </select>
         {% if request.GET.keys|length > 0 %}
             <a class="button" href="{% url 'core:document_list' %}">Clear filters</a>
         {% endif %}
@@ -80,4 +116,16 @@
             </div>
         {% endblock %}
     {% endif %}
+    <script>
+        changeFilter = function(event, param_name){
+            var new_param = event.target.value;
+            var params = new URLSearchParams(location.search);
+            if(new_param === ""){
+                params.delete(param_name);
+            }else{
+                params.set(param_name, new_param);
+            }
+            window.location.search = params.toString();
+        }
+    </script>
 {% endblock %}

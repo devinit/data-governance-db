@@ -28,15 +28,27 @@ class DocumentList(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         institution_param = self.request.GET.get('institution', None)
+        try:
+            self.institution_param = int(institution_param)
+        except (ValueError, TypeError) as e:
+            self.institution_param = None
         category_param = self.request.GET.get('category', None)
+        try:
+            self.category_param = int(category_param)
+        except (ValueError, TypeError) as e:
+            self.category_param = None
         type_param = self.request.GET.get('type', None)
+        try:
+            self.type_param = int(type_param)
+        except (ValueError, TypeError) as e:
+            self.type_param = None
         documents = Document.objects.all().order_by('institution__name', 'category__name')
-        if institution_param is not None:
-            documents = documents.filter(institution__id=institution_param)
-        if category_param is not None:
-            documents = documents.filter(category__id=category_param)
-        if type_param is not None:
-            documents = documents.filter(type__id=type_param)
+        if self.institution_param is not None:
+            documents = documents.filter(institution__id=self.institution_param)
+        if self.category_param is not None:
+            documents = documents.filter(category__id=self.category_param)
+        if self.type_param is not None:
+            documents = documents.filter(type__id=self.type_param)
         return documents
 
     def get_context_data(self, **kwargs):
@@ -46,6 +58,16 @@ class DocumentList(LoginRequiredMixin, generic.ListView):
         page_param = self.request.GET.get('p', 1)
         paginator = Paginator(documents, 100)
         context['document_list'] = paginator.get_page(page_param)
+
+        institutions = Institution.objects.all().order_by('name')
+        context['institutions'] = institutions
+        context['institution_param'] = self.institution_param
+        categories = Category.objects.all().order_by('name')
+        context['categories'] = categories
+        context['category_param'] = self.category_param
+        document_types = DocumentType.objects.all().order_by('name')
+        context['document_types'] = document_types
+        context['type_param'] = self.type_param
 
         return context
 

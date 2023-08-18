@@ -179,7 +179,7 @@ div.button-row{
     margin-bottom: 8px;
 }
 
-div.button-row form, div.button-row a {
+div.button-row form, div.button-row a, div.button-row select {
     float:left;
     margin-block-end: 0;
     margin-right: 5px;
