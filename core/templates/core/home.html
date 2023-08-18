@@ -3,9 +3,15 @@
 {% block title %}Data Governance DB{% endblock %}
 {% block content %}
     {% if user.is_authenticated %}
-        <h1>Data Governance DB</h1>
-        <p>Welcome to the Data Governance DB.</p>
+        {% if home_page_settings %}
+            {{ home_page_settings.authenticated_content|safe }}
+        {% else %}
+            <h1>Data Governance DB</h1><p>Welcome to the Data Governance DB.</p>
+        {% endif %}
     {% else %}
+        {% if home_page_settings %}
+            {{ home_page_settings.unauthenticated_content|safe }}
+        {% endif %}
         <p>Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">register</a> to continue.</p>
     {% endif %}
 {% endblock %}

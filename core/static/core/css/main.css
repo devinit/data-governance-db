@@ -1,5 +1,6 @@
 body {
     font-family:geomanist regular,sans-serif;
+    margin: 0;
 }
 
 table.red {
@@ -209,6 +210,7 @@ h2.no-margin input{
 .pagination {
     display: inline-block;
     padding-top: 5px;
+    margin: 5px;
 }
 
 .pagination a {
@@ -236,4 +238,42 @@ h2.no-margin input{
 .logo {
     height: 25px;
     display: inline-block;
+}
+
+.footer {
+    width:100%;
+    color: #fff;
+    background-color: #443e42;
+    border-top: 1px solid #292628;
+    margin-top: auto;
+  }
+
+.footer p {
+    font-size: 15px;
+}
+
+.footer p:first-child {
+    font-size: 15px;
+    padding: 20px 20px 0px 20px;
+}
+
+.footer p:last-child {
+    font-size: 15px;
+    padding: 0px 20px 20px 20px;
+}
+
+.footer a, .footer a:visited {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    padding: 8px;
 }

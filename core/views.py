@@ -8,7 +8,8 @@ from .models import (
     Institution,
     InstitutionType,
     Category,
-    DocumentType
+    DocumentType,
+    HomePageSettings
 )
 from .forms import (
     DocumentForm,
@@ -21,6 +22,16 @@ from .forms import (
 
 class Home(generic.TemplateView):
     template_name = "core/home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(Home, self).get_context_data(**kwargs)
+        home_page_settings = HomePageSettings.objects.all()
+        if len(home_page_settings) == 0:
+            context['home_page_settings'] = None
+        else:
+            context['home_page_settings'] = home_page_settings.first()
+
+        return context
 
 
 class DocumentList(LoginRequiredMixin, generic.ListView):

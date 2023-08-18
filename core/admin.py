@@ -7,7 +7,8 @@ from .models import (
     Institution,
     InstitutionType,
     Category,
-    DocumentType
+    DocumentType,
+    HomePageSettings
 )
 from import_export import fields, resources
 from import_export.widgets import ForeignKeyWidget
@@ -70,3 +71,4 @@ admin.site.register(InstitutionType)
 admin.site.register(Category)
 admin.site.register(DocumentType)
 admin.site.register(LogEntry, LogEntryAdmin)
+admin.site.register(HomePageSettings)

@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
+from django.core.exceptions import ValidationError
 from django.core.validators import URLValidator
+from ckeditor.fields import RichTextField
 
 
 def validate_url(value):
@@ -120,3 +122,18 @@ class DocumentType(models.Model):
         return reverse('core:document_type_detail', kwargs={'id': self.id})
 
     name = models.TextField()
+
+
+class HomePageSettings(models.Model):
+    class Meta:
+        verbose_name_plural = 'home page settings'
+
+    def __str__(self):
+        return "Home page settings"
+
+    def clean(self):
+        if HomePageSettings.objects.exists() and not self.pk:
+            raise ValidationError("You can only have one home page settings object.")
+
+    authenticated_content = RichTextField(help_text="Home page content that will appear to logged-in users.")
+    unauthenticated_content = RichTextField(help_text="Home page content that will appear to new users above the register/login links.")

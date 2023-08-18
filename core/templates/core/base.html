@@ -20,75 +20,88 @@
         {% endblock %}
     </head>
     <body>
-        <ul class="header">
-            <li class="left"><a
-                href="{% url 'core:home' %}">
-                <img class="logo" src="{% static 'core/images/logo.webp' %}"/>
-            </a></li>
-            <li class="left"><a
-                {% if request.resolver_match.url_name == 'home' %}
-                    class="active"
+        <div class="container">
+            <ul class="header">
+                <li class="left"><a
+                    href="{% url 'core:home' %}">
+                    <img class="logo" src="{% static 'core/images/logo.webp' %}"/>
+                </a></li>
+                <li class="left"><a
+                    {% if request.resolver_match.url_name == 'home' %}
+                        class="active"
+                    {% endif %}
+                    href="{% url 'core:home' %}">Data Governance DB</a></li>
+                <li class="left">
+                    <a target="_blank"
+                        href="https://docs.google.com/document/d/1za7--nrfNzxn-X_yAWVVSer9_WF7L1340qJ-Uh0lNzI/edit?usp=sharing">
+                        FAQ
+                    </a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="left"><a
+                        {% if request.resolver_match.url_name in 'document_list,document_detail' %}
+                            class="active"
+                        {% endif %}
+                        href="{% url 'core:document_list' %}">Documents</a></li>
+                    <li class="left"><a
+                        {% if request.resolver_match.url_name in 'institution_list,institution_detail' %}
+                            class="active"
+                        {% endif %}
+                        href="{% url 'core:institution_list' %}">Institutions</a></li>
+                    <li class="left"><a
+                        {% if request.resolver_match.url_name in 'institution_type_list,institution_type_detail' %}
+                            class="active"
+                        {% endif %}
+                        href="{% url 'core:institution_type_list' %}">Institution types</a></li>
+                    <li class="left"><a
+                        {% if request.resolver_match.url_name in 'category_list,category_detail' %}
+                            class="active"
+                        {% endif %}
+                        href="{% url 'core:category_list' %}">Categories</a></li>
+                    <li class="left"><a
+                        {% if request.resolver_match.url_name in 'document_type_list,document_type_detail' %}
+                            class="active"
+                        {% endif %}
+                        href="{% url 'core:document_type_list' %}">Document types</a></li>
+                    <li class="right"><a href="{% url 'logout' %}">Logout</a></li>
+                    <li class="right"><a
+                        href="https://devinit.org/who-we-are/" target="_blank">About DI</a></li>
+                    <li class="right"><a
+                        {% if request.resolver_match.url_name == 'password_change' %}
+                            class="active"
+                        {% endif %}
+                        href="{% url 'password_change' %}">Change password</a></li>
+                    {% if user.is_staff %}
+                        <li class="right"><a href="{% url 'admin:index' %}">Admin</a></li>
+                    {% endif %}
+                {% else %}
+                    <li class="right"><a
+                        href="https://devinit.org/who-we-are/" target="_blank">About DI</a></li>
+                    <li class="right"><a
+                        {% if request.resolver_match.url_name == 'register' %}
+                            class="active"
+                        {% endif %}
+                        href="{% url 'register' %}">Register</a></li>
+                    <li class="right"><a
+                        {% if request.resolver_match.url_name == 'login' %}
+                            class="active"
+                        {% endif %}
+                        href="{% url 'login' %}">Login</a></li>
                 {% endif %}
-                href="{% url 'core:home' %}">Data Governance DB</a></li>
-            <li class="left">
-                <a target="_blank"
-                    href="https://docs.google.com/document/d/1za7--nrfNzxn-X_yAWVVSer9_WF7L1340qJ-Uh0lNzI/edit?usp=sharing">
-                    FAQ
-                </a>
-            </li>
-            {% if user.is_authenticated %}
-                <li class="left"><a
-                    {% if request.resolver_match.url_name in 'document_list,document_detail' %}
-                        class="active"
-                    {% endif %}
-                    href="{% url 'core:document_list' %}">Documents</a></li>
-                <li class="left"><a
-                    {% if request.resolver_match.url_name in 'institution_list,institution_detail' %}
-                        class="active"
-                    {% endif %}
-                    href="{% url 'core:institution_list' %}">Institutions</a></li>
-                <li class="left"><a
-                    {% if request.resolver_match.url_name in 'institution_type_list,institution_type_detail' %}
-                        class="active"
-                    {% endif %}
-                    href="{% url 'core:institution_type_list' %}">Institution types</a></li>
-                <li class="left"><a
-                    {% if request.resolver_match.url_name in 'category_list,category_detail' %}
-                        class="active"
-                    {% endif %}
-                    href="{% url 'core:category_list' %}">Categories</a></li>
-                <li class="left"><a
-                    {% if request.resolver_match.url_name in 'document_type_list,document_type_detail' %}
-                        class="active"
-                    {% endif %}
-                    href="{% url 'core:document_type_list' %}">Document types</a></li>
-                <li class="right"><a href="{% url 'logout' %}">Logout</a></li>
-                <li class="right"><a
-                    href="https://devinit.org/who-we-are/" target="_blank">About DI</a></li>
-                <li class="right"><a
-                    {% if request.resolver_match.url_name == 'password_change' %}
-                        class="active"
-                    {% endif %}
-                    href="{% url 'password_change' %}">Change password</a></li>
-                {% if user.is_staff %}
-                    <li class="right"><a href="{% url 'admin:index' %}">Admin</a></li>
-                {% endif %}
-            {% else %}
-                <li class="right"><a
-                    href="https://devinit.org/who-we-are/" target="_blank">About DI</a></li>
-                <li class="right"><a
-                    {% if request.resolver_match.url_name == 'register' %}
-                        class="active"
-                    {% endif %}
-                    href="{% url 'register' %}">Register</a></li>
-                <li class="right"><a
-                    {% if request.resolver_match.url_name == 'login' %}
-                        class="active"
-                    {% endif %}
-                    href="{% url 'login' %}">Login</a></li>
-            {% endif %}
-        </ul>
-        {% block content %}
-        {% endblock %}
+            </ul>
+            <div class="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="footer">
+                <p>
+                    © Copyright 2023 Development initiatives. Content produced by Development Initiatives is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">Creative Commons Attribution BY-NC-ND 4.0 International license</a>, unless stated otherwise on an image or page.
+                </p>
+                <p>
+                    We use cookies on our website to help us understand how you use the site and to make improvements.
+                    These may be used to track your visit to our website or to enable us to personalise your browsing experience, and they may be shared with Google Analytics so that your data can be processed.
+                    To learn more about how we collect, keep, and process your private information in compliance with GDPR, please view our <a href="https://devinit.org/documents/1069/Privacy_and_cookies_policy.pdf" target="_blank">Privacy and Cookies Policy</a>.</p>
+            </div>
+        </div>
     </body>
 </html>
