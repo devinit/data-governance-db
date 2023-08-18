@@ -136,12 +136,12 @@ ul.header li a:hover {
 }
 
 ul.header li a.active {
-    background-color: #e84439;
+    background-color: #bc2629;
 }
 
 .button {
     cursor: pointer;
-    background-color: #e84439;
+    background-color: #bc2629;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -164,7 +164,7 @@ ul.header li a.active {
 }
 
 .button:hover:not(.active-button) {
-    background-color: #bc2629;
+    background-color: #6b120a;
 }
 
 .disabled {
@@ -223,7 +223,7 @@ h2.no-margin input{
 }
 
 .pagination a.active {
-    background-color: #e84439;
+    background-color: #bc2629;
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
 }

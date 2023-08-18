@@ -1,6 +1,6 @@
 {% load static %}
 
-<html>
+<html lang="en">
     <head>
         <title>{% block title %}{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{% static 'core/images/favicon.png' %}">
@@ -22,9 +22,9 @@
     <body>
         <div class="container">
             <ul class="header">
-                <li class="left"><a
+                <li class="left"><a aria-label="Home"
                     href="{% url 'core:home' %}">
-                    <img class="logo" src="{% static 'core/images/logo.webp' %}"/>
+                    <img class="logo" alt="Development Initiatives Logo" src="{% static 'core/images/logo.webp' %}"/>
                 </a></li>
                 <li class="left"><a
                     {% if request.resolver_match.url_name == 'home' %}
