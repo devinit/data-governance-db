@@ -56,10 +56,7 @@ table.red thead, table.red th {
     font-size: 18px;
     font-weight: bold;
     color: #FFFFFF;
-    background: #8f1b13;
-    background: -moz-linear-gradient(top, #f0826d 0%, #bc2629 66%, #8f1b13 100%);
-    background: -webkit-linear-gradient(top, #f0826d 0%, #bc2629 66%, #8f1b13 100%);
-    background: linear-gradient(to bottom, #f0826d 0%, #bc2629 66%, #8f1b13 100%);
+    background: #bc2629;
     border-top: 1px solid #444444;
     text-align: center;
 }
