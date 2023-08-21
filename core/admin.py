@@ -63,6 +63,14 @@ class CustomDocumentAdmin(ImportExportModelAdmin):
     resource_class = DocumentResource
 
 
+class ExternalDocumentResource(resources.ModelResource):
+
+    class Meta:
+        model = Document
+        fields = ('institution__name', 'category__name', 'type__name', 'title', 'year', 'publisher', 'note', 'url')
+        export_order = ('institution__name', 'category__name', 'type__name', 'title', 'year', 'publisher', 'note', 'url')
+
+
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(Document, CustomDocumentAdmin)

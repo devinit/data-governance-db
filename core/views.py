@@ -1,8 +1,9 @@
 from django.urls import reverse
-from django.views import generic
+from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.paginator import Paginator
 from django.db.models import Count
+from django.http import HttpResponse
 from .models import (
     Document,
     Institution,
@@ -18,6 +19,9 @@ from .forms import (
     CategoryForm,
     DocumentTypeForm
 )
+from .admin import (
+    ExternalDocumentResource
+)
 
 
 class Home(generic.TemplateView):
@@ -32,6 +36,37 @@ class Home(generic.TemplateView):
             context['home_page_settings'] = home_page_settings.first()
 
         return context
+
+
+class DocumentCSVExport(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        institution_param = request.GET.get('institution', None)
+        try:
+            institution_param = int(institution_param)
+        except (ValueError, TypeError) as e:
+            institution_param = None
+        category_param = request.GET.get('category', None)
+        try:
+            category_param = int(category_param)
+        except (ValueError, TypeError) as e:
+            category_param = None
+        type_param = request.GET.get('type', None)
+        try:
+            type_param = int(type_param)
+        except (ValueError, TypeError) as e:
+            self.type_param = None
+        documents = Document.objects.all().order_by('institution__name', 'category__name')
+        if institution_param is not None:
+            documents = documents.filter(institution__id=institution_param)
+        if category_param is not None:
+            documents = documents.filter(category__id=category_param)
+        if type_param is not None:
+            documents = documents.filter(type__id=type_param)
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="documents.csv"'
+        dataset = ExternalDocumentResource().export(documents)
+        response.content = dataset.csv
+        return response
 
 
 class DocumentList(LoginRequiredMixin, generic.ListView):

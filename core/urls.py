@@ -7,6 +7,7 @@ app_name = 'core'
 urlpatterns = [
     path('', views.Home.as_view(), name='home'),
     path('documents', views.DocumentList.as_view(), name='document_list'),
+    path('documents/export', views.DocumentCSVExport.as_view(), name='document_export'),
     path('documents/<int:pk>', views.DocumentDetail.as_view(), name='document_detail'),
     path('documents/add', views.DocumentAdd.as_view(), name='document_add'),
     path('documents/<int:pk>/delete', views.DocumentDelete.as_view(), name='document_delete'),

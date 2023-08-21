@@ -42,6 +42,9 @@
                 >{{document_type}}</option>
             {% endfor %}
         </select>
+        <a class="button" target="_blank" href="
+        {% url 'core:document_export' %}?{% for key,value in request.GET.items %}{% if key != 'p' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}
+        ">Export</a>
         {% if request.GET.keys|length > 0 %}
             <a class="button" href="{% url 'core:document_list' %}">Clear filters</a>
         {% endif %}
