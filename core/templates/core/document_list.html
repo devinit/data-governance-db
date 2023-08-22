@@ -121,22 +121,6 @@
                 {% endfor %}
             </tbody>
         </table>
-        {% block pagination %}
-            <div class="pagination">
-                {% for page_number in document_list.paginator.get_elided_page_range %}
-                    {% if page_number == document_list.paginator.ELLIPSIS %}
-                        {{page_number}}
-                    {% else %}
-                        <a
-                            href="?p={{ page_number }}{% for key,value in request.GET.items %}{% if key != 'p' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}"
-                            class="{% if page_number == document_list.number %}active{% endif %}"
-                        >
-                            {{page_number}}
-                        </a>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        {% endblock %}
     {% endif %}
     <script>
         changeFilter = function(event, param_name){

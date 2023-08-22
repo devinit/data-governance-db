@@ -1,7 +1,6 @@
 from django.urls import reverse
 from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.core.paginator import Paginator
 from django.db.models import Count
 from django.http import HttpResponse
 from .models import (
@@ -114,10 +113,6 @@ class DocumentList(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(DocumentList, self).get_context_data(**kwargs)
         documents = self.get_queryset()
-
-        page_param = self.request.GET.get('p', 1)
-        paginator = Paginator(documents, 100)
-        context['document_list'] = paginator.get_page(page_param)
 
         institutions = Institution.objects.all().order_by('name')
         context['institutions'] = institutions
