@@ -67,8 +67,8 @@ class ExternalDocumentResource(resources.ModelResource):
 
     class Meta:
         model = Document
-        fields = ('institution__name', 'category__name', 'type__name', 'title', 'year', 'publisher', 'note', 'url')
-        export_order = ('institution__name', 'category__name', 'type__name', 'title', 'year', 'publisher', 'note', 'url')
+        fields = ('institution__name', 'institution__type__name', 'category__name', 'type__name', 'title', 'year', 'publisher', 'note', 'url')
+        export_order = ('institution__name', 'institution__type__name', 'category__name', 'type__name', 'title', 'year', 'publisher', 'note', 'url')
 
 
 admin.site.unregister(User)

@@ -55,6 +55,11 @@ class DocumentCSVExport(LoginRequiredMixin, View):
             type_param = int(type_param)
         except (ValueError, TypeError) as e:
             self.type_param = None
+        scope_param = self.request.GET.get('scope', None)
+        try:
+            self.scope_param = int(scope_param)
+        except (ValueError, TypeError) as e:
+            self.scope_param = None
         documents = Document.objects.all().order_by('institution__name', 'category__name')
         if institution_param is not None:
             documents = documents.filter(institution__id=institution_param)
@@ -62,6 +67,8 @@ class DocumentCSVExport(LoginRequiredMixin, View):
             documents = documents.filter(category__id=category_param)
         if type_param is not None:
             documents = documents.filter(type__id=type_param)
+        if self.scope_param is not None:
+            documents = documents.filter(institution__type__id=self.scope_param)
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename="documents.csv"'
         dataset = ExternalDocumentResource().export(documents)
@@ -88,6 +95,11 @@ class DocumentList(LoginRequiredMixin, generic.ListView):
             self.type_param = int(type_param)
         except (ValueError, TypeError) as e:
             self.type_param = None
+        scope_param = self.request.GET.get('scope', None)
+        try:
+            self.scope_param = int(scope_param)
+        except (ValueError, TypeError) as e:
+            self.scope_param = None
         documents = Document.objects.all().order_by('institution__name', 'category__name')
         if self.institution_param is not None:
             documents = documents.filter(institution__id=self.institution_param)
@@ -95,6 +107,8 @@ class DocumentList(LoginRequiredMixin, generic.ListView):
             documents = documents.filter(category__id=self.category_param)
         if self.type_param is not None:
             documents = documents.filter(type__id=self.type_param)
+        if self.scope_param is not None:
+            documents = documents.filter(institution__type__id=self.scope_param)
         return documents
 
     def get_context_data(self, **kwargs):
@@ -114,6 +128,9 @@ class DocumentList(LoginRequiredMixin, generic.ListView):
         document_types = DocumentType.objects.all().order_by('name')
         context['document_types'] = document_types
         context['type_param'] = self.type_param
+        scopes = InstitutionType.objects.all().order_by('name')
+        context['scopes'] = scopes
+        context['scope_param'] = self.scope_param
 
         return context
 

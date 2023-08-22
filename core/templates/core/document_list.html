@@ -18,6 +18,18 @@
                 >{{institution}}</option>
             {% endfor %}
         </select>
+        <select class="button" onchange="changeFilter(event, 'scope')">
+            <option value=""
+            {% if not scope_param %}selected{% endif %}
+            >Scope</option>
+            {% for scope in scopes %}
+                <option value="{{scope.id}}"
+                {% if scope.id == scope_param %}
+                    selected
+                {% endif %}
+                >{{scope}}</option>
+            {% endfor %}
+        </select>
         <select class="button" onchange="changeFilter(event, 'category')">
             <option value=""
             {% if not category_param %}selected{% endif %}
@@ -56,6 +68,7 @@
             <thead>
                 <tr>
                     <th>Institution</th>
+                    <th>Scope</th>
                     <th>Category</th>
                     <th>Title</th>
                     <th>Type</th>
@@ -72,7 +85,13 @@
                                     {{ document.institution }}
                                 </a>
                             </td>
+                            <td>
+                                <a href="?scope={{ document.institution.type.id }}{% for key,value in request.GET.items %}{% if key != 'scope' and key != 'p' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">
+                                    {{ document.institution.type }}
+                                </a>
+                            </td>
                         {% else %}
+                            <td></td>
                             <td></td>
                         {% endif %}
                         {% if document.category %}
