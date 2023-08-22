@@ -6,18 +6,6 @@
         {% if perms.core.add_document %}
             <a class="button" href="{% url 'core:document_add' %}">Add a new document</a>
         {% endif %}
-        <select class="button" onchange="changeFilter(event, 'institution')">
-            <option value=""
-            {% if not institution_param %}selected{% endif %}
-            >Institution</option>
-            {% for institution in institutions %}
-                <option value="{{institution.id}}"
-                {% if institution.id == institution_param %}
-                    selected
-                {% endif %}
-                >{{institution}}</option>
-            {% endfor %}
-        </select>
         <select class="button" onchange="changeFilter(event, 'scope')">
             <option value=""
             {% if not scope_param %}selected{% endif %}
@@ -28,6 +16,18 @@
                     selected
                 {% endif %}
                 >{{scope}}</option>
+            {% endfor %}
+        </select>
+        <select class="button" onchange="changeFilter(event, 'institution')">
+            <option value=""
+            {% if not institution_param %}selected{% endif %}
+            >Institution</option>
+            {% for institution in institutions %}
+                <option value="{{institution.id}}"
+                {% if institution.id == institution_param %}
+                    selected
+                {% endif %}
+                >{{institution}}</option>
             {% endfor %}
         </select>
         <select class="button" onchange="changeFilter(event, 'category')">
@@ -67,8 +67,8 @@
         <table class="red sortable">
             <thead>
                 <tr>
-                    <th>Institution</th>
                     <th>Scope</th>
+                    <th>Institution</th>
                     <th>Category</th>
                     <th>Title</th>
                     <th>Type</th>
@@ -81,13 +81,13 @@
                     <tr>
                         {% if document.institution %}
                             <td>
-                                <a href="?institution={{ document.institution.id }}{% for key,value in request.GET.items %}{% if key != 'institution' and key != 'p' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">
-                                    {{ document.institution }}
+                                <a href="?scope={{ document.institution.type.id }}{% for key,value in request.GET.items %}{% if key != 'scope' and key != 'p' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">
+                                    {{ document.institution.type }}
                                 </a>
                             </td>
                             <td>
-                                <a href="?scope={{ document.institution.type.id }}{% for key,value in request.GET.items %}{% if key != 'scope' and key != 'p' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">
-                                    {{ document.institution.type }}
+                                <a href="?institution={{ document.institution.id }}{% for key,value in request.GET.items %}{% if key != 'institution' and key != 'p' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">
+                                    {{ document.institution }}
                                 </a>
                             </td>
                         {% else %}
