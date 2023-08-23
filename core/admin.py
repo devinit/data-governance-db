@@ -56,8 +56,8 @@ class DocumentResource(resources.ModelResource):
         model = Document
         skip_unchanged = True
         report_skipped = False
-        fields = ('id', 'institution', 'institution__name', 'category', 'category__name', 'type', 'type__name', 'title', 'year', 'publisher', 'note', 'abstract', 'url')
-        export_order = ('id', 'institution', 'institution__name', 'category', 'category__name', 'type', 'type__name', 'title', 'year', 'publisher', 'note', 'abstract', 'url')
+        fields = ('id', 'institution', 'institution__name', 'category', 'category__name', 'type', 'type__name', 'title', 'year', 'publisher', 'abstract', 'note', 'url')
+        export_order = ('id', 'institution', 'institution__name', 'category', 'category__name', 'type', 'type__name', 'title', 'year', 'publisher', 'abstract', 'note', 'url')
 
 class CustomDocumentAdmin(ImportExportModelAdmin):
     resource_class = DocumentResource
@@ -67,8 +67,8 @@ class ExternalDocumentResource(resources.ModelResource):
 
     class Meta:
         model = Document
-        fields = ('institution__type__name', 'institution__name', 'institution__full_name', 'category__name', 'type__name', 'title', 'year', 'publisher', 'note', 'abstract', 'url')
-        export_order = ('institution__type__name', 'institution__name', 'institution__full_name', 'category__name', 'type__name', 'title', 'year', 'publisher', 'note', 'abstract', 'url')
+        fields = ('institution__type__name', 'institution__name', 'institution__full_name', 'category__name', 'type__name', 'title', 'year', 'publisher', 'abstract', 'note', 'url')
+        export_order = ('institution__type__name', 'institution__name', 'institution__full_name', 'category__name', 'type__name', 'title', 'year', 'publisher', 'abstract', 'note', 'url')
 
 
 admin.site.unregister(User)

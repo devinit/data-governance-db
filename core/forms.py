@@ -17,8 +17,8 @@ class DocumentForm(forms.ModelForm):
             'type',
             'year',
             'publisher',
-            'note',
             'abstract',
+            'note',
             'url'
         ]
         widgets = {
@@ -40,10 +40,10 @@ class DocumentForm(forms.ModelForm):
             'publisher': forms.Textarea(
                 attrs={'rows': 1,}
             ),
-            'note': forms.Textarea(
+            'abstract': forms.Textarea(
                 attrs={'rows': 3}
             ),
-            'abstract': forms.Textarea(
+            'note': forms.Textarea(
                 attrs={'rows': 3}
             ),
             'url': forms.Textarea(
