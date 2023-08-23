@@ -22,7 +22,7 @@ class Document(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('core:document_detail', kwargs={'id': self.id})
+        return reverse('core:document_detail', args=[self.id])
 
     institution = models.ForeignKey(
         'Institution',
@@ -65,6 +65,11 @@ class Document(models.Model):
         null = True
     )
 
+    abstract = models.TextField(
+        blank = True,
+        null = True
+    )
+
     url = models.TextField(
         blank = True,
         null = True,
@@ -78,9 +83,14 @@ class Institution(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('core:institution_detail', kwargs={'id': self.id})
+        return reverse('core:institution_detail', args=[self.id])
 
     name = models.TextField()
+
+    full_name = models.TextField(
+        blank = True,
+        null = True,
+    )
 
     type = models.ForeignKey(
         'InstitutionType',
@@ -96,7 +106,7 @@ class InstitutionType(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('core:institution_type_detail', kwargs={'id': self.id})
+        return reverse('core:institution_type_detail', args=[self.id])
 
     name = models.TextField()
 
@@ -109,7 +119,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('core:category_detail', kwargs={'id': self.id})
+        return reverse('core:category_detail', args=[self.id])
 
     name = models.TextField()
 
@@ -119,7 +129,7 @@ class DocumentType(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('core:document_type_detail', kwargs={'id': self.id})
+        return reverse('core:document_type_detail', args=[self.id])
 
     name = models.TextField()
 

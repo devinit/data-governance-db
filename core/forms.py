@@ -18,6 +18,7 @@ class DocumentForm(forms.ModelForm):
             'year',
             'publisher',
             'note',
+            'abstract',
             'url'
         ]
         widgets = {
@@ -42,6 +43,9 @@ class DocumentForm(forms.ModelForm):
             'note': forms.Textarea(
                 attrs={'rows': 3}
             ),
+            'abstract': forms.Textarea(
+                attrs={'rows': 3}
+            ),
             'url': forms.Textarea(
                 attrs={'rows': 1, 'required': True}
             ),
@@ -59,11 +63,15 @@ class InstitutionForm(forms.ModelForm):
         model = Institution
         fields = [
             'name',
+            'full_name',
             'type'
         ]
         widgets = {
             'name': forms.Textarea(
                 attrs={'rows': 1, 'required': True}
+            ),
+            'full_name': forms.Textarea(
+                attrs={'rows': 2}
             ),
             'type': forms.Select(
                 attrs={'required': True}

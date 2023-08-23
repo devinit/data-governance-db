@@ -35,6 +35,14 @@
             </tr>
             <tr>
                 <td>
+                    <b>Full name</b>
+                </td>
+                <td>
+                    {{ institution.full_name|default_if_none:"" }}
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <b>Type</b>
                 </td>
                 {% if institution.type %}
