@@ -13,7 +13,8 @@
     <table class="red sortable">
         <thead>
             <tr>
-                <th>Institution</th>
+                <th>Name</th>
+                <th>Full name</th>
                 <th>Type</th>
                 <th>Number of documents</th>
             </tr>
@@ -29,6 +30,9 @@
                             href="{% url 'core:document_list' %}?institution={{ institution.id }}"
                         {% endif %}
                         >{{ institution }}</a>
+                    </td>
+                    <td>
+                        {{ institution.full_name|default_if_none:"" }}
                     </td>
                     {% if institution.type %}
                         <td>
