@@ -1,6 +1,6 @@
 asgiref==3.8.1
 # backports.zoneinfobackports.zoneinfo;python_version<"3.9"
-Django==4.2.15
+Django==4.2.16
 django-ckeditor==6.7.1
 django-filter==24.3
 django-import-export==4.1.1
