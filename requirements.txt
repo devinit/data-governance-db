@@ -9,7 +9,7 @@ gunicorn==23.0.0
 importlib-metadata==8.6.1
 Markdown==3.7
 python-dotenv==1.0.1
-pytz==2025.1
+pytz==2025.2
 six==1.17.0
 sqlparse==0.5.3
 zipp==3.21.0
