@@ -11,6 +11,6 @@ Markdown==3.9
 python-dotenv==1.2.1
 pytz==2025.2
 six==1.17.0
-sqlparse==0.5.4
+sqlparse==0.5.5
 zipp==3.23.0
 lxml==6.0.2
