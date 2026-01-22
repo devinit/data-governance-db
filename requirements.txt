@@ -7,7 +7,7 @@ django-import-export==4.4.0
 djangorestframework==3.16.1
 gunicorn==23.0.0
 importlib-metadata==8.7.1
-Markdown==3.9
+Markdown==3.10.1
 python-dotenv==1.2.1
 pytz==2025.2
 six==1.17.0
