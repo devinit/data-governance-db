@@ -5,7 +5,7 @@ django-ckeditor==6.7.3
 django-filter==25.1
 django-import-export==4.4.0
 djangorestframework==3.16.1
-gunicorn==23.0.0
+gunicorn==24.0.0
 importlib-metadata==8.7.1
 Markdown==3.9
 python-dotenv==1.2.1
